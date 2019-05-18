@@ -37,4 +37,16 @@
       }
       return $brandsAry;
     }
+
+    public static function getAllOptionsForForm(){
+      $brands = self::find([
+        'columns' => 'id, name',
+        'order' => 'name'
+      ]);
+      $brandsAry = [''=>'-Select Brand-'];
+      foreach($brands as $brand){
+        $brandsAry[$brand->id] = $brand->name;
+      }
+      return $brandsAry;
+    }
   }

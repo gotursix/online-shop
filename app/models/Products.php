@@ -3,7 +3,7 @@
   use Core\Model;
   use Core\Validators\{RequiredValidator,NumericValidator};
   use App\Models\{Brands,ProductImages};
-  use Core\H;
+  use Core\{DB,H};
 
   class Products extends Model {
 
@@ -59,6 +59,41 @@
               group by pi.product_id
               ";
       return $this->query($sql)->results();
+    }
+
+    public static function getProductsBySearch($options){
+      $where = "products.deleted = '0' AND pi.sort = '0'";
+      $binds = [];
+
+      if(array_key_exists('brand',$options) && !empty($options['brand'])){
+        $where .= " AND products.brand_id = ?";
+        $binds[] = $options['brand'];
+      }
+
+      if(array_key_exists('min_price',$options) && !empty($options['min_price'])){
+        $where .= " AND products.price >= ?";
+        $binds[] = $options['min_price'];
+      }
+
+      if(array_key_exists('max_price',$options) && !empty($options['max_price'])){
+        $where .= " AND products.price <= ?";
+        $binds[] = $options['max_price'];
+      }
+
+      if(array_key_exists('search',$options) && !empty($options['search'])){
+        $where .= " AND (products.name LIKE ? OR brands.name LIKE ?)";
+        $binds[] = "%".$options['search']."%";
+        $binds[] = "%".$options['search']."%";
+      }
+
+      $sql = "SELECT products.*, pi.url as url, brands.name as brand
+              FROM products
+              JOIN product_images as pi ON products.id = pi.product_id
+              JOIN brands ON products.brand_id = brands.id
+              WHERE {$where}
+              GROUP BY products.id
+              ";
+      return DB::getInstance()->query($sql,$binds)->results();
     }
 
     public function getBrandName(){

@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-use Core\{Model,Session,Cookie,DB};
+use Core\{Model,Session,Cookie,DB,H};
 
 class Carts extends Model {
 
@@ -33,6 +33,25 @@ class Carts extends Model {
       WHERE items.cart_id = ? AND pi.sort = 0 AND items.deleted = 0";
     $db = DB::getInstance();
     return $db->query($sql,[(int)$cart_id])->results();
+  }
+
+  public static function purchaseCart($cart_id){
+    $cart = self::findById($cart_id);
+    $cart->purchased = 1;
+    $cart->save();
+    Cookie::delete(CART_COOKIE_NAME);
+    return $cart;
+  }
+
+  public static function itemCountCurrentCart(){
+    if(! Cookie::exists(CART_COOKIE_NAME)){
+      return 0;
+    }
+    $cart_id = Cookie::get(CART_COOKIE_NAME);
+    $db = DB::getInstance();
+    $sql = "SELECT SUM(qty) as qty FROM cart_items WHERE cart_id = ? AND deleted = 0";
+    $result = $db->query($sql,[(int)$cart_id])->first();
+    return $result->qty;
   }
 
 }
