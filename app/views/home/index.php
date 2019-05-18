@@ -1,10 +1,7 @@
-<?php
-use Core\H;
-?>
+
 <?php $this->start('body'); ?>
 <h1 class="text-center text-secondary">Welcome to Ruah MVC Framework!</h1>
 <main class="products-wrapper">
-  <?php //H::dnd($this->products); ?>
   <?php foreach($this->products as $product):
     $shipping = ($product->shipping == '0.00')? 'Free Shipping!' : 'Shipping: $'.$product->shipping;
     $list = ($product->list != '0.00')? '$'.$product->list : '';

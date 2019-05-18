@@ -10,7 +10,7 @@
   define('DEFAULT_CONTROLLER', 'Home'); // default controller if there isn't one defined in the url
   define('DEFAULT_LAYOUT', 'default'); // if no layout is set in the controller use this layout.
 
-  define('PROOT', '/live/'); // set this to '/' for a live server.
+  define('PROOT', '/shop/'); // set this to '/' for a live server.
   define('VERSION','0.27'); // release version this can be used to display version or version assets like css and js files useful for fighting cached browser files
 
   define('SITE_TITLE', 'Ruah MVC Framework'); // This will be used if no site title is set
@@ -27,5 +27,5 @@
 
   ################# Gateway Settings #######################################
   define('GATEWAY','stripe'); // could use stripe, paypal
-  define('STRIPE_PUBLIC','pk_test_UgjEw1q4QsEClQOnyRE2C0r8');
-  define('STRIPE_PRIVATE','sk_test_s38Ykf9pzkwx7kGzLuDH7qSJ');
+  define('STRIPE_PUBLIC','pk_test_dVAFmhr5PcusMd6SMLP7GJcj00yJpboZEF');
+  define('STRIPE_PRIVATE','sk_test_nfkFVOqp4Dy73eAo5CISnc8O00Gt8xmHzY');
