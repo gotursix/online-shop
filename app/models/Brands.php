@@ -38,7 +38,8 @@
       return $brandsAry;
     }
 
-    public static function getAllOptionsForForm(){
+    public static function getAllOptionsForForm()
+    {
       $brands = self::find([
         'columns' => 'id, name',
         'order' => 'name'

@@ -1,9 +1,8 @@
 <?php
   namespace App\Models;
-  use Core\Model;
+  use Core\{Model, DB, H};
   use Core\Validators\{RequiredValidator,NumericValidator};
   use App\Models\{Brands,ProductImages};
-  use Core\{DB,H};
 
   class Products extends Model {
 
@@ -48,25 +47,16 @@
       return $this->featured === 1;
     }
 
-    public function featuredProducts(){
-      $sql = "SELECT products.*, pi.url as url, brands.name as brand
-              FROM products
-              JOIN product_images as pi
-              ON products.id = pi.product_id
-              JOIN brands
-              ON products.brand_id = brands.id
-              WHERE products.featured = '1' and products.deleted = '0' and pi.sort = '0'
-              group by pi.product_id
-              ";
-      return $this->query($sql)->results();
-    }
-
-    public static function getProductsBySearch($options){
-      $where = "products.deleted = '0' AND pi.sort = '0'";
+    public static function featuredProducts($options){
+      $db = DB::getInstance();
+      $limit = (array_key_exists('limit',$options) && !empty($options['limit']))? $options['limit'] : 4;
+      $offset = (array_key_exists('offset',$options) && !empty($options['offset']))? $options['offset'] : 0;
+      $where = "products.deleted = 0 AND pi.sort = '0'";
+      $hasFilters = self::hasFilters($options);
       $binds = [];
 
       if(array_key_exists('brand',$options) && !empty($options['brand'])){
-        $where .= " AND products.brand_id = ?";
+        $where .= " AND brands.id = ?";
         $binds[] = $options['brand'];
       }
 
@@ -82,18 +72,34 @@
 
       if(array_key_exists('search',$options) && !empty($options['search'])){
         $where .= " AND (products.name LIKE ? OR brands.name LIKE ?)";
-        $binds[] = "%".$options['search']."%";
-        $binds[] = "%".$options['search']."%";
+        $binds[] = "%" . $options['search'] . "%";
+        $binds[] = "%" . $options['search'] . "%";
       }
 
-      $sql = "SELECT products.*, pi.url as url, brands.name as brand
-              FROM products
-              JOIN product_images as pi ON products.id = pi.product_id
-              JOIN brands ON products.brand_id = brands.id
+      $sql = "SELECT products.*, pi.url as url, brands.name as brand FROM products
+              JOIN product_images as pi
+              ON products.id = pi.product_id
+              JOIN brands
+              ON products.brand_id = brands.id
               WHERE {$where}
-              GROUP BY products.id
-              ";
-      return DB::getInstance()->query($sql,$binds)->results();
+            ";
+
+      $group = ($hasFilters)? " GROUP BY products.id ORDER BY products.name" : "GROUP BY products.id ORDER BY products.featured DESC";
+      $pager = " Limit ? OFFSET ?";
+      $binds[] = $limit;
+      $binds[] = $offset;
+
+      $total = $db->query($sql.$group,$binds)->count();
+      $results = $db->query($sql.$group.$pager,$binds)->results();
+
+      return ['results'=>$results,'total'=>$total];
+    }
+
+    public static function hasFilters($options){
+      foreach($options as $key => $value){
+        if(!empty($value) && $key != 'limit' && $key != 'offset') return true;
+      }
+      return false;
     }
 
     public function getBrandName(){

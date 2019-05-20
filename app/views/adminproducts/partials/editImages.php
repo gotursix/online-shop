@@ -27,7 +27,9 @@
 <div id="sortableImages" class="row align-items-center justify-content-start p-2">
     <?php foreach($this->images as $image):?>
       <div class="col flex-grow-0" id="image_<?=$image->id?>">
+        <?php if(count((array)$this->images)>1) : ?>
         <span class="deleteButton" onclick="deleteImage('<?=$image->id?>')"><i class="fas fa-times"></i></span>
+      <?php endif ?>
         <div class="edit-image-wrapper" data-id="$image->id">
           <img src="<?=PROOT.$image->url?>" />
         </div>
@@ -52,7 +54,7 @@
           if(resp.success){
             jQuery('#image_'+resp.model_id).remove();
             updateSort();
-            alertMsg('Image Deleted');
+            location.reload();
           }
         }
       });

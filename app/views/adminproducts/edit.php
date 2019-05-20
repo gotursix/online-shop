@@ -1,6 +1,10 @@
-<?php use Core\FH; ?>
+<?php use Core\{FH , H}; ?>
 <?php $this->setSiteTitle("Edit ".$this->product->name);?>
 <?php $this->start('head') ?>
+<?php
+
+//H::dnd($this->images);
+?>
   <script src='<?=PROOT?>vendor/tinymce/tinymce/tinymce.min.js'></script>
   <script>
     tinymce.init({
