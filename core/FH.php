@@ -104,7 +104,7 @@ class FH {
     $id = str_replace('[]','',$name);
     $html = '<div' . $divString . '>';
     $html .= '<label for="'.$id.'" class="control-label">' . $label . '</label>';
-    $html .= '<select id="'.$id.'" name="'.$name.'" '.$inputString.'>'.self::optionsForSelect($options,$value).'</select>';
+    $html .= '<select id="'.$id.'" name="'.$name.'" '.$inputString.' required>'.self::optionsForSelect($options,$value).'</select>';
     $html .= '<span class="invalid-feedback">'.self::errorMsg($errors,$name).'</span>';
     $html .= '</div>';
     return $html;
