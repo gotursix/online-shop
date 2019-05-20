@@ -4,7 +4,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <?php $this->end()?>
 <?php $this->start('body')?>
-<h2>Dashboard</h2><hr />
+<h2>Dashboard ( imma modify later bruh )</h2><hr />
 
 <div class="row">
   <div class="col-12">

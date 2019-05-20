@@ -57,7 +57,7 @@ class AdminproductsController extends Controller {
       }
     }
     $this->view->product = $product;
-    $this->view->brands = Brands::getOptionsForForm($this->currentUser->id);
+    $this->view->brands = Brands::getAllOptionsForForm();
     $this->view->formAction = PROOT.'adminproducts/add';
     $this->view->displayErrors = $product->getErrorMessages();
     $this->view->render('adminproducts/add');

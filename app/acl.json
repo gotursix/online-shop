@@ -18,5 +18,10 @@
     "Admindashboard" : ["*"],
     "Adminproducts" : ["*"],
     "Adminbrands" : ["*"]
+  },
+  "Admin" : {
+    "denied" : {},
+    "Admindashboard" : ["*"],
+    "Adminproducts" : ["*"]
   }
 }
