@@ -9,7 +9,7 @@
     public $id, $created_at, $updated_at, $user_id, $name, $price, $list, $shipping, $body, $brand_id, $featured = 0, $deleted=0;
     const blackList = ['id','deleted','featured'];
     protected static $_table = 'products';
-    protected static $_softDelete = true;
+    protected static $_softDelete = false;
 
     public function beforeSave(){
       $this->timeStamps();
@@ -25,9 +25,10 @@
       $this->runValidation(new NumericValidator($this,['field'=>'shipping','msg'=>'Shipping must be a number.']));
     }
 
-    public static function findByUserId($user_id,$params=[]){
+    public static function findByUserId($user_id,$params=[])
+    {
       $conditions = [
-        'conditions' => "user_id = ?",
+        'conditions' => "user_id = ?  ",
         'bind' => [(int)$user_id],
         'order' => 'name'
       ];
@@ -39,6 +40,15 @@
       $conditions = [
         'conditions' => "id = ? AND user_id = ?",
         'bind' => [(int)$id, (int)$user_id]
+      ];
+      return self::findFirst($conditions);
+    }
+
+       public static function findByIdAproved($id)
+       {
+         $conditions = [
+         'conditions' => "id = ? AND deleted != 1 ",
+          'bind' => [(int)$id]
       ];
       return self::findFirst($conditions);
     }

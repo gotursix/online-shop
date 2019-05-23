@@ -1,4 +1,9 @@
 {
   "Home" : "home",
-  "Admin" : "admindashboard/index"
+  "Admin" : "admindashboard/index",
+  "Products" : {
+    "View Products" : "adminproducts/index",
+    "seperator" : " ",
+    "Add Product" : "adminproducts/add"
+  }
 }

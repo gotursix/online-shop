@@ -52,4 +52,14 @@ class H {
     <?php endforeach;
     return ob_get_clean();
   }
+
+  public static function count($thing , $like)
+  {
+    $x = 0;
+    foreach ($thing as $thing) 
+      if($thing->deleted == 0)
+        $x++;
+    
+    return $x;
+  }
 }

@@ -9,7 +9,7 @@
   class ProductsController extends Controller {
 
     public function detailsAction($product_id) {
-      $product = Products::findById((int)$product_id);
+      $product = Products::findByIdAproved((int)$product_id);
       if(!$product){
         Session::addMsg('danger',"Oops...that product isn't available.");
         Router::redirect('/home');

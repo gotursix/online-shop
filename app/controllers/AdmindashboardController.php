@@ -1,8 +1,8 @@
 <?php
 namespace App\Controllers;
-
+use Core\Router;
 use Core\{Controller, H};
-use App\Models\{Transactions};
+use App\Models\{Transactions, Users };
 
 class AdmindashboardController extends Controller {
   public function __construct($controller,$action){
@@ -10,7 +10,9 @@ class AdmindashboardController extends Controller {
     $this->view->setLayout('admin');
   }
 
-  public function indexAction(){
+  public function indexAction()
+  {
+    $this->view->users = Users::findUnallowed();
     $this->view->render('admindashboard/index');
   }
 
@@ -25,5 +27,21 @@ class AdmindashboardController extends Controller {
     }
     $resp = ['data'=>$data, 'labels'=> $labels];
     $this->jsonResponse($resp);
+  }
+
+  public function changerankAction($id)
+  {
+      $user = Users::findById($id);
+      if($user->acl == '["User"]')
+      {
+        $user->acl= NULL;
+        $user->save();
+      }
+      else
+      {
+        $user->acl='["User"]';
+        $user->save();
+      }
+      Router::redirect('admindashboard');
   }
 }

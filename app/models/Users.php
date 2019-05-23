@@ -45,6 +45,19 @@ class Users extends Model {
     return self::findFirst(['conditions'=> "username = ?", 'bind'=>[$username]]);
   }
 
+  public static function findById($id) {
+    return self::findFirst(['conditions'=> "id = ?", 'bind'=>[$id]]);
+  }
+
+  public static function findUnallowed() 
+  {
+    $allowed=0;
+    return self::find([
+      'conditions' => "id != ?",
+      'bind' => [$allowed]
+    ]);
+  }
+
   public static function currentUser() {
     if(!isset(self::$currentLoggedInUser) && Session::exists(CURRENT_USER_SESSION_NAME)) {
       self::$currentLoggedInUser = self::findById((int)Session::get(CURRENT_USER_SESSION_NAME));
@@ -95,7 +108,8 @@ class Users extends Model {
     return json_decode($this->acl, true);
   }
 
-  public static function addAcl($user_id,$acl){
+  public static function addAcl($user_id,$acl)
+  {
     $user = self::findById($user_id);
     if(!$user) return false;
     $acls = $user->acls();
@@ -107,7 +121,8 @@ class Users extends Model {
     return true;
   }
 
-  public static function removeAcl($user_id, $acl){
+  public static function removeAcl($user_id, $acl)
+  {
     $user = self::findById($user_id);
     if(!$user) return false;
     $acls = $user->acls();

@@ -1,4 +1,21 @@
+<?php use Core\{FH , H}; ?>
 <?php $this->start('body')?>
+
+<?php
+$deleted = 0;
+$aproved = 0 ;
+
+    foreach($this->products as $product)
+       if($product->deleted == 1)
+        $deleted++;
+      else
+        $aproved++;
+?>
+
+
+<?php if($deleted!=0): ?>
+<?php if($this->currentUser->acl != '["SuperAdmin"]'): ?>
+<h1 class="text-center">Pending for aprove</h1><hr />
 <table class="table table-bordered table-hover table-striped table-sm">
   <thead>
     <th>Name</th>
@@ -8,6 +25,36 @@
   </thead>
   <tbody>
     <?php foreach($this->products as $product): ?>
+      <?php if($product->deleted == 1): ?>
+      <tr data-id="<?=$product->id?>">
+        <td><?=$product->name ?></td>
+        <td><?=$product->price ?></td>
+        <td><?=$product->shipping ?></td>
+        <td class="text-right">
+          <a class="btn btn-sm btn-secondary mr-1" href="<?=PROOT?>adminproducts/edit/<?=$product->id?>"><i class="fas fa-edit"></i></a>
+          <a class="btn btn-sm btn-danger" href="#" onclick="deleteProduct('<?=$product->id?>');return false;"><i class="fas fa-trash-alt"></i></a>
+        </td>
+      </tr>
+       <?php endif; ?>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+<br><br>
+<?php endif; ?>
+<?php endif; ?>
+
+<?php if($aproved !=0): ?>
+<h1 class="text-center">My announces</h1><hr />
+<table class="table table-bordered table-hover table-striped table-sm">
+  <thead>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Shipping</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <?php foreach($this->products as $product): ?>
+      <?php if($product->deleted == 0): ?>
       <tr data-id="<?=$product->id?>">
         <td><?=$product->name ?></td>
         <td><?=$product->price ?></td>
@@ -20,10 +67,15 @@
           <a class="btn btn-sm btn-danger" href="#" onclick="deleteProduct('<?=$product->id?>');return false;"><i class="fas fa-trash-alt"></i></a>
         </td>
       </tr>
+    <?php endif; ?>
     <?php endforeach; ?>
   </tbody>
 </table>
+<?php endif; ?>
 
+<?php if($aproved ==0): ?>
+  <hr /><h1 class="text-center">No announces added.</h1><hr />
+<?php endif; ?>
 
 <script>
   function deleteProduct(id){

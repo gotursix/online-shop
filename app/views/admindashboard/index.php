@@ -1,65 +1,53 @@
+<?php
+  use Core\H;
+?>
 <?php $this->start('head')?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
   <script type="text/javascript" src="<?=PROOT?>js/moment.min.js?v=<?=VERSION?>"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <?php $this->end()?>
+
+<?php //H::dnd($this->users); ?>
+
 <?php $this->start('body')?>
-<h2>Dashboard ( imma modify later bruh )</h2><hr />
 
-<div class="row">
-  <div class="col-12">
-    <div class="form-group col-2 offset-10">
-      <select id="dateRangeSelector" class="form-control form-control-sm">
-        <option value="last-0">Today</option>
-        <option value="last-7">Last 7 Days</option>
-        <option value="last-28" selected="selected">Last 28 Days</option>
-        <option value="last-90">Last 90 Days</option>
-        <option value="last-365">Last 365 Days</option>
-      </select>
-    </div>
-  </div>
-  <div class="col-12">
-    <canvas id="dailySalesChart" width="400" height="80" class="chartjs"></canvas>
-  </div>
-</div>
+<br><h1>Allow users to forum</h1><hr /><br> 
 
-<script>
-  function loadDailySalesChart(){
-    var range = jQuery('#dateRangeSelector').val();
-    jQuery.ajax({
-      url : '<?=PROOT?>admindashboard/getDailySales',
-      method : "POST",
-      data : {range:range},
-      success : function(resp){ console.log(resp);
-        var ctx = document.getElementById('dailySalesChart');
-        var data = {
-          labels: resp.labels,
-          datasets: [
-            {
-              "label":"Daily Sales",
-              "data" : resp.data,
-              "fill":false,
-              "borderColor":"rgb(75, 192, 192)",
-              "lineTension":0.1
-            }
-          ]
-        };
-        var options = {};
-        var myLineChart = new Chart(ctx, {
-          type: 'line',
-          data: data,
-          options: options
-        });
-      }
-    });
-  }
+<table class="table table-bordered table-hover table-striped table-sm text-center">
+  <thead>
+    <th>Created at</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Rank</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <?php foreach($this->users as $user): ?>
+      <?php if($user->acl !='["SuperAdmin"]'): ?>
+      <tr data-id="<?=$user->id?>">
+        <td><?=$user->created_at ?></td>
+        <td><?=$user->username ?></td>
+        <td><?=$user->email ?></td>
+        <td><?=$user->fname ?></td>
+        <td><?=$user->lname ?></td>
+        <?php if($user->acl =='["User"]'): ?>
+          <td><p class="text-important">Allowed</p></td>
+          <?php else: ?>
+          <td><p class="text-danger">Denied</p></td>
+         <?php endif; ?>
+        <td class="text-center">
+          <a class="btn btn-sm btn-secondary mr-1" href="<?=PROOT?>admindashboard/changerank/<?=$user->id?>"><i class="fas fa-edit"></i></a>   
+        </td>
+      </tr>
 
-  document.getElementById('dateRangeSelector').addEventListener("change",function(){
-    loadDailySalesChart();
-  });
+      <?php endif; ?>
+    <?php endforeach; ?>
+  </tbody>
+</table>
 
-  $('document').ready(function(){
-    loadDailySalesChart();
-  })
-</script>
+
+<br><br><br><br><br><br><h1>Allow announces</h1><hr /><br> 
+
 <?php $this->end(); ?>

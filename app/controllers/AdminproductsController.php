@@ -20,6 +20,7 @@ class AdminproductsController extends Controller {
 
   public function indexAction(){
     $this->view->products = Products::findByUserId($this->currentUser->id);
+    $this->view->currentUser = $this->currentUser;
     $this->view->render('adminproducts/index');
   }
 
@@ -47,12 +48,23 @@ class AdminproductsController extends Controller {
       $product->assign($this->request->get(),Products::blackList);
       $product->featured = ($this->request->get('featured') == 'on')? 1 : 0;
       $product->user_id = $this->currentUser->id;
+
+      if($this->currentUser->acl==='["SuperAdmin"]')
+      $product->deleted = 0;
+      else 
+         $product->deleted = 1;
       $product->save();
+
       if($product->validationPassed()){
         //upload images
         ProductImages::uploadProductImages($product->id,$uploads);
         //redirect
-        Session::addMsg('success','Product Added!');
+
+        if($this->currentUser->acl==='["SuperAdmin"]')
+            Session::addMsg('success','Product Added!');
+        else 
+            Session::addMsg('success','Product Added! It will be checked by an admin and then aproved.');
+
         Router::redirect('adminproducts');
       }
     }
@@ -133,7 +145,7 @@ class AdminproductsController extends Controller {
         Router::redirect('adminproducts');
       }
     }
-    $this->view->brands = Brands::getOptionsForForm($user->id);
+    $this->view->brands = Brands::getAllOptionsForForm();
     $this->view->images = $images;
     $this->view->product = $product;
     $this->view->displayErrors = $product->getErrorMessages();

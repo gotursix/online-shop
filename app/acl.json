@@ -11,7 +11,9 @@
     "denied" : {
       "Register" : ["login", "register"]
     },
-    "Register" : ["logout"]
+    "Register" : ["logout"],
+    "Adminproducts" : ["*"]
+
   },
   "SuperAdmin" : {
     "denied" : {},
@@ -19,9 +21,7 @@
     "Adminproducts" : ["*"],
     "Adminbrands" : ["*"]
   },
-  "Admin" : {
-    "denied" : {},
-    "Admindashboard" : ["*"],
-    "Adminproducts" : ["*"]
+  "User" : {
+    "denied" : {}
   }
 }
