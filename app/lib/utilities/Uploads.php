@@ -37,7 +37,7 @@
         // checking file type
         if(!in_array(exif_imagetype($file['tmp_name']),$this->_allowedImageTypes)){
           $name = $file['name'];
-          $msg = $name . " is not an allowed file type. Please use a jpeg, gif, or png.";
+          $msg = $name . " Formatul fișierului nu este acceptat. Puteți utiliza jpeg, gif sau png.";
           $this->addErrorMessage($name,$msg);
         }
       }
@@ -47,7 +47,7 @@
       foreach($this->_files as $file){
         $name = $file['name'];
         if($file['size'] > $this->_maxAllowedSize){
-          $msg = $name . " is over the max allowed size of 5mb.";
+          $msg = $name . " este peste dimensiunea acceptata de 5mb.";
           $this->addErrorMessage($name,$msg);
         }
       }

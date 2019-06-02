@@ -1,18 +1,18 @@
 <?php $this->start('body');?>
 <div class="card bg-light col-md-6 offset-md-3">
   <div class="card-header row align-items-center">
-    <div class="col"><h2>Brands</h2></div>
+    <div class="col"><h2>Categorii</h2></div>
     <div class="ml-2 col text-right">
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBrandForm">
-        Add New Brand
-      </button>
+Adaugă o nouă categorie
+        </button>
     </div>
   </div>
   <div class="card-body">
     <table class="table table-bordered table-hover table-striped table-sm" id="brandsTable">
       <thead>
         <th>ID</th>
-        <th>Brand Name</th>
+        <th>Numele categoriei</th>
         <th></th>
       </thead>
       <tbody>
@@ -56,17 +56,17 @@
   }
 
   function deleteBrand(id){
-    if(confirm("Are you sure you want to delete this brand?")){
+    if(confirm("Sunteți sigur că doriți să ștergeți această categorie?")){
       jQuery.ajax({
         'url': '<?=PROOT?>adminbrands/delete',
         'method' : "POST",
         'data' : {id:id},
         'success' : function(resp){
           if(resp.success){
-            alertMsg("Brand Deleted",'success');
+            alertMsg("Categorie ștearsă",'success');
             jQuery('tr[data-id="'+resp.model_id+'"]').remove();
           } else {
-            alertMsg("Something went wrong",'warning');
+            alertMsg("Ceva a mers rău",'warning');
           }
         }
       });

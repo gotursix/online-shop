@@ -13,8 +13,8 @@
     }
 
     public function validator(){
-      $this->runValidation(new RequiredValidator($this,['field'=>'name','msg'=>'Brand Name is required.']));
-      $this->runValidation(new UniqueValidator($this,['field'=>['name','user_id','deleted'],'msg'=>'That Brand Name already exists.']));
+      $this->runValidation(new RequiredValidator($this,['field'=>'name','msg'=>'Numele categoriei este necesar.']));
+      $this->runValidation(new UniqueValidator($this,['field'=>['name','user_id','deleted'],'msg'=>'Numele categoriei există deja.']));
     }
 
     public static function findByUserIdAndId($user_id,$id){
@@ -31,7 +31,7 @@
         'bind' => [$user_id],
         'order' => 'name'
       ]);
-      $brandsAry = [''=>'-Select Brand-'];
+      $brandsAry = [''=>'-Alege categoria-'];
       foreach($brands as $brand){
         $brandsAry[$brand->id] = $brand->name;
       }
@@ -44,7 +44,7 @@
         'columns' => 'id, name',
         'order' => 'name'
       ]);
-      $brandsAry = [''=>'-Select Brand-'];
+      $brandsAry = [''=>'-Alege categoria-'];
       foreach($brands as $brand){
         $brandsAry[$brand->id] = $brand->name;
       }

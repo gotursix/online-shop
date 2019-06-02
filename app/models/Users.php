@@ -19,18 +19,18 @@ class Users extends Model {
   const blackListedFormKeys = ['id','deleted'];
 
   public function validator(){
-    $this->runValidation(new RequiredValidator($this,['field'=>'fname','msg'=>'First Name is required.']));
-    $this->runValidation(new RequiredValidator($this,['field'=>'lname','msg'=>'Last Name is required.']));
-    $this->runValidation(new RequiredValidator($this,['field'=>'email','msg'=>'Email is required.']));
-    $this->runValidation(new EmailValidator($this, ['field'=>'email','msg'=>'You must provide a valid email address']));
-    $this->runValidation(new MaxValidator($this,['field'=>'email','rule'=>150,'msg'=>'Email must be less than 150 characters.']));
-    $this->runValidation(new MinValidator($this,['field'=>'username','rule'=>6,'msg'=>'Username must be at least 6 characters.']));
-    $this->runValidation(new MaxValidator($this,['field'=>'username','rule'=>150,'msg'=>'Username must be less than 150 characters.']));
-    $this->runValidation(new UniqueValidator($this,['field'=>['username','deleted'],'msg'=>'That username already exists. Please choose a new one.']));
-    $this->runValidation(new RequiredValidator($this,['field'=>'password','msg'=>'Password is required.']));
-    $this->runValidation(new MinValidator($this,['field'=>'password','rule'=>6,'msg'=>'Password must be a minimum of 6 characters.']));
+    $this->runValidation(new RequiredValidator($this,['field'=>'fname','msg'=>'Numele este necesar.']));
+    $this->runValidation(new RequiredValidator($this,['field'=>'lname','msg'=>'Prenumele este necesar.']));
+    $this->runValidation(new RequiredValidator($this,['field'=>'email','msg'=>'Adresa de email este necesară.']));
+    $this->runValidation(new EmailValidator($this, ['field'=>'email','msg'=>'Trebuie să introduceți o adresă de email validă.']));
+    $this->runValidation(new MaxValidator($this,['field'=>'email','rule'=>150,'msg'=>'Adresa de email trebuie să fie mai scurtă de 150 de caractere.']));
+    $this->runValidation(new MinValidator($this,['field'=>'username','rule'=>6,'msg'=>'Numele de utilizator trebuie să conțina cel puțin 6 caractere.']));
+    $this->runValidation(new MaxValidator($this,['field'=>'username','rule'=>150,'msg'=>'Numele de utilizator trebuie să conțină maxim 150 de caractere.']));
+    $this->runValidation(new UniqueValidator($this,['field'=>['username','deleted'],'msg'=>'Numele de utilizator există deja.']));
+    $this->runValidation(new RequiredValidator($this,['field'=>'password','msg'=>'Parola este necesară.']));
+    $this->runValidation(new MinValidator($this,['field'=>'password','rule'=>6,'msg'=>'Parola trebuie să conțină cel puțin 6 caractere.']));
     if($this->isNew()){
-      $this->runValidation(new MatchesValidator($this,['field'=>'password','rule'=>$this->confirm,'msg'=>"Your passwords do not match."]));
+      $this->runValidation(new MatchesValidator($this,['field'=>'password','rule'=>$this->confirm,'msg'=>"Parola nu se potrivește."]));
     }
   }
 

@@ -16,11 +16,11 @@
     }
 
     public function validateShipping(){
-      $this->runValidation(new RequiredValidator($this,['field'=>'name','msg'=>'Name is required.']));
-      $this->runValidation(new RequiredValidator($this,['field'=>'shipping_address1','msg'=>'Address is required.']));
-      $this->runValidation(new RequiredValidator($this,['field'=>'shipping_city','msg'=>'City is required.']));
-      $this->runValidation(new RequiredValidator($this,['field'=>'shipping_state','msg'=>'State is required.']));
-      $this->runValidation(new RequiredValidator($this,['field'=>'shipping_zip','msg'=>'Zip Code is required.']));
+      $this->runValidation(new RequiredValidator($this,['field'=>'name','msg'=>'Numele este necesar.']));
+      $this->runValidation(new RequiredValidator($this,['field'=>'shipping_address1','msg'=>'Adresa este necesară.']));
+      $this->runValidation(new RequiredValidator($this,['field'=>'shipping_city','msg'=>'Orașul este necesar.']));
+      $this->runValidation(new RequiredValidator($this,['field'=>'shipping_state','msg'=>'Țara este necesară.']));
+      $this->runValidation(new RequiredValidator($this,['field'=>'shipping_zip','msg'=>'Codul poștal este necesar.']));
     }
 
     public static function getDailySales($range='last-28'){

@@ -12,7 +12,7 @@
 <?php $this->start('body') ?>
 <div class="row align-items-center justify-content-center">
   <div class="col-md-8 bg-light p-3">
-    <h1 class="text-center">Add New Product</h1>
+    <h1 class="text-center">Adaugă un nou produs</h1>
     <?php $this->partial('adminproducts','form') ?>
   </div>
 </div>

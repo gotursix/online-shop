@@ -4,6 +4,9 @@
   $openClass = $this->hasFilters? " open" : "";
   $openIcon = $this->hasFilters ? "fa-chevron-left" : "fa-search";
 ?>
+  <h1 class="text-center text-secondary w-100"><img src="<?=PROOT?>images/euro.png"><img src="<?=PROOT?>images/click.png">
+<br> Adaugă anunțul tău GRATUIT      
+</h1>
 <div class="d-flex two-column-wrapper<?=$openClass?>" id="two-column-wrapper">
 
   <div id="expand-filters">
@@ -13,30 +16,29 @@
   <aside class="filters-wrapper">
     <form id="filter-form" action="" method="post" autocomplete="off">
       <div class="form-group">
-        <label class="sr-only" for="search">Search</label>
+        <label class="sr-only" for="search">Caută</label>
         <div class="input-group">
-          <input class="form-control" id="search" name="search" value="<?=$this->search?>" placeholder="Search..." />
+          <input class="form-control" id="search" name="search" value="<?=$this->search?>" placeholder="Caută..." />
           <button class="input-group-append btn btn-info"><i class="fas fa-search"></i></button>
         </div>
       </div>
 
       <div class="row">
         <?= FH::hiddenInput('page',$this->page)?>
-        <?= FH::selectBlock('Brand','brand',$this->brand,$this->brandOptions,['class'=>'form-control form-control-sm'],['class'=>'form-group col-12'])?>
+        <?= FH::selectBlock('Categorii','brand',$this->brand,$this->brandOptions,['class'=>'form-control form-control-sm'],['class'=>'form-group col-12'])?>
         <?= FH::inputBlock('number','Price Min','min_price',$this->min_price,['class'=>'form-control form-control-sm','step'=>'any'],['class'=>'form-group col-6'])?>
         <?= FH::inputBlock('number','Price Max','max_price',$this->max_price,['class'=>'form-control form-control-sm','step'=>'any'],['class'=>'form-group col-6'])?>
       </div>
 
       <div class="row">
         <div class="col-12">
-          <button class="btn btn-info w-100">Search</button>
+          <button class="btn btn-info w-100">Caută</button>
         </div>
       </div>
     </form>
   </aside>
 
   <main class="products-wrapper">
-    <h1 class="text-center text-secondary w-100">Welcome to Ruah MVC Framework!</h1>
     <?php foreach($this->products as $product):
       $shipping = ($product->shipping == '0.00')? 'Free Shipping!' : 'Shipping: $'.$product->shipping;
       $list = ($product->list != '0.00')? '$'.$product->list : '';
