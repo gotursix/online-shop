@@ -37,7 +37,7 @@
 
   <div class="col col-md-6">
     <h3><?= $this->product->name?></h3>
-    <p>by <?=$this->product->getBrandName()?></p>
+    <p> <?=$this->product->getBrandName()?></p>
     <hr />
     <div>
       <span class="product-details-label">Preț: </span>
