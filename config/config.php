@@ -16,8 +16,8 @@
   define('PROOT', '/shop/'); // set this to '/' for a live server.
   define('VERSION','0.30'); // release version this can be used to display version or version assets like css and js files useful for fighting cached browser files
 
-  define('SITE_TITLE', 'Ruah MVC Framework'); // This will be used if no site title is set
-  define('MENU_BRAND', 'RUAH'); //This is the Brand text in the menu
+  define('SITE_TITLE', 'Euro Click'); // This will be used if no site title is set
+  define('MENU_BRAND', 'EURO CLICK'); //This is the Brand text in the menu
 
   define('CURRENT_USER_SESSION_NAME', 'fEueuD2Z5fOknVeY6Qp1'); //session name for logged in user
   define('REMEMBER_ME_COOKIE_NAME', 'CKfKmnZ3bzxSeL5M9g1x'); // cookie name for logged in user remember me
