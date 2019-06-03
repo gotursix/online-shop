@@ -53,6 +53,15 @@
       return self::findFirst($conditions);
     }
 
+    public static function findAll()
+       {
+         $conditions = [
+         'conditions' => ""
+      ];
+      return self::find($conditions);
+    }
+
+
     public function isChecked(){
       return $this->featured === 1;
     }

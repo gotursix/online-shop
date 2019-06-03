@@ -2,7 +2,7 @@
 namespace App\Controllers;
 use Core\Router;
 use Core\{Controller, H};
-use App\Models\{Transactions, Users };
+use App\Models\{Transactions, Users , Products};
 
 class AdmindashboardController extends Controller {
   public function __construct($controller,$action){
@@ -13,6 +13,7 @@ class AdmindashboardController extends Controller {
   public function indexAction()
   {
     $this->view->users = Users::findUnallowed();
+    $this->view->products = Products::findAll();
     $this->view->render('admindashboard/index');
   }
 
@@ -42,6 +43,14 @@ class AdmindashboardController extends Controller {
         $user->acl='["User"]';
         $user->save();
       }
+      Router::redirect('admindashboard');
+  }
+
+  public function allowAction($id)
+  {
+      $products = Products::findById($id);
+      $products->deleted= 0;
+      $products->save();
       Router::redirect('admindashboard');
   }
 }
