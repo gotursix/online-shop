@@ -41,7 +41,8 @@ namespace Core;
      * @param  string $type can be head or body
      */
     public function start($type) {
-      if(empty($type)) die('you must define a type');
+      if(empty($type)) die('
+trebuie să definiți un tip');
       $this->_currentBuffer = $type;
       ob_start();
     }
@@ -56,7 +57,7 @@ namespace Core;
         $this->_content[$this->_currentBuffer] = ob_get_clean();
         $this->_currentBuffer = null;
       } else {
-        die('You must first run the start method.');
+        die('Trebuie să executați mai întâi metoda de pornire.');
       }
     }
 

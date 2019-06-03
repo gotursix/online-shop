@@ -61,9 +61,9 @@ class AdminproductsController extends Controller {
         //redirect
 
         if($this->currentUser->acl==='["SuperAdmin"]')
-            Session::addMsg('success','Product Added!');
+            Session::addMsg('success','Produs adăugat!');
         else 
-            Session::addMsg('success','Product Added! It will be checked by an admin and then aproved.');
+            Session::addMsg('success','Produs adăugat! Va fi verificat de administrator .');
 
         Router::redirect('adminproducts');
       }
@@ -76,28 +76,29 @@ class AdminproductsController extends Controller {
   }
 
   public function deleteAction(){
-    $resp = ['success'=>false,'msg'=>'Something went wrong...'];
+    $resp = ['success'=>false,'msg'=>'Ceva a mers greșit...'];
     if($this->request->isPost()){
       $id = $this->request->get('id');
       $product = Products::findByIdAndUserId($id, $this->currentUser->id);
       if($product){
         ProductImages::deleteImages($id);
         $product->delete();
-        $resp = ['success' => true, 'msg' => 'Product Deleted.','model_id' => $id];
+        $resp = ['success' => true, 'msg' => 'Produs șters.','model_id' => $id];
       }
     }
     $this->jsonResponse($resp);
   }
 
   public function toggleFeaturedAction(){
-    $resp = ['success'=>false,'msg'=>'Something went wrong...'];
+    $resp = ['success'=>false,'msg'=>'Ceva a mers rau...'];
     if($this->request->isPost()){
       $id = $this->request->get('id');
       $product = Products::findByIdAndUserId($id, $this->currentUser->id);
       if($product){
         $product->featured = ($product->featured == 1)? 0 : 1;
         $product->save();
-        $msg = ($product->featured == 1)? "Product Now Featured" : "Product No Longer Featured";
+        $msg = ($product->featured == 1)? "
+Produsul este recomandat" : "Produsul nu mai este recomandat";
         $resp = ['success' => true, 'msg' => $msg,'model_id' => $id,'featured'=>$product->featured];
       }
     }
@@ -108,7 +109,7 @@ class AdminproductsController extends Controller {
     $user = Users::currentUser();
     $product = Products::findByIdAndUserId((int)$id,$user->id);
     if(!$product){
-      Session::addMsg('danger','You do not have permission to edit that product');
+      Session::addMsg('danger','Nu aveți permisiunea de a edita acel produs');
       Router::redirect('adminproducts');
     }
     $images = ProductImages::findByProductId($product->id);

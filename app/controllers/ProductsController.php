@@ -11,7 +11,7 @@
     public function detailsAction($product_id) {
       $product = Products::findByIdAproved((int)$product_id);
       if(!$product){
-        Session::addMsg('danger',"Oops...that product isn't available.");
+        Session::addMsg('danger',"Acest produs nu este disponibil");
         Router::redirect('/home');
       }
       $this->view->product = $product;
