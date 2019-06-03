@@ -18,9 +18,9 @@ $aproved = 0 ;
 <h1 class="text-center">Pending for aprove</h1><hr />
 <table class="table table-bordered table-hover table-striped table-sm">
   <thead>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Shipping</th>
+    <th>Nume</th>
+    <th>Preț</th>
+    <th>Transport</th>
     <th></th>
   </thead>
   <tbody>
@@ -44,12 +44,12 @@ $aproved = 0 ;
 <?php endif; ?>
 
 <?php if($aproved !=0): ?>
-<h1 class="text-center">My announces</h1><hr />
+<h1 class="text-center">Anunțurile mele</h1><hr />
 <table class="table table-bordered table-hover table-striped table-sm">
   <thead>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Shipping</th>
+    <th>Nume</th>
+    <th>Preț</th>
+    <th>Transport</th>
     <th></th>
   </thead>
   <tbody>
@@ -74,12 +74,12 @@ $aproved = 0 ;
 <?php endif; ?>
 
 <?php if($aproved ==0): ?>
-  <hr /><h1 class="text-center">No announces added.</h1><hr />
+  <hr /><h1 class="text-center">Nici un anunț adăugat.</h1><hr />
 <?php endif; ?>
 
 <script>
   function deleteProduct(id){
-    if(window.confirm("Are you sure you want to delete this product. It cannot be reversed.")){
+    if(window.confirm("Sunteți sigur că doriți să ștergeți acest produs?")){
       jQuery.ajax({
         url : '<?=PROOT?>adminproducts/delete',
         method : "POST",

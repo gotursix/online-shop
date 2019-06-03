@@ -1,4 +1,4 @@
-<h3>Purchase Summary</h3>
+<h3>Sumarul cumpărăturilor</h3>
 <?php foreach($this->items as $item):?>
   <div class="cart-preview-item">
     <div class="cart-preview-item-img"><img src="<?=PROOT . $item->url?>" alt="<?=$item->name?>" /></div>

@@ -39,7 +39,7 @@
       data : formData,
       success: function(resp){
         if(resp.success){
-          alertMsg("Brand Successfully Saved",'success');
+          alertMsg("Categoria a fost salvată cu succes",'success');
           jQuery('#addBrandForm').modal('hide');
           var row = jQuery('tr[data-id="'+resp.brand.id+'"]');
           var newRow = '<tr data-id="'+resp.brand.id+'"><td>'+resp.brand.id+'</td><td>'+resp.brand.name+'</td><td></td></tr>'

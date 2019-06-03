@@ -26,8 +26,8 @@
       <div class="row">
         <?= FH::hiddenInput('page',$this->page)?>
         <?= FH::selectBlock('Categorii','brand',$this->brand,$this->brandOptions,['class'=>'form-control form-control-sm'],['class'=>'form-group col-12'])?>
-        <?= FH::inputBlock('number','Price Min','min_price',$this->min_price,['class'=>'form-control form-control-sm','step'=>'any'],['class'=>'form-group col-6'])?>
-        <?= FH::inputBlock('number','Price Max','max_price',$this->max_price,['class'=>'form-control form-control-sm','step'=>'any'],['class'=>'form-group col-6'])?>
+        <?= FH::inputBlock('number','Preț minim','min_price',$this->min_price,['class'=>'form-control form-control-sm','step'=>'any'],['class'=>'form-group col-6'])?>
+        <?= FH::inputBlock('number','Preț maxim','max_price',$this->max_price,['class'=>'form-control form-control-sm','step'=>'any'],['class'=>'form-group col-6'])?>
       </div>
 
       <div class="row">
@@ -40,17 +40,18 @@
 
   <main class="products-wrapper">
     <?php foreach($this->products as $product):
-      $shipping = ($product->shipping == '0.00')? 'Free Shipping!' : 'Shipping: $'.$product->shipping;
+      $shipping = ($product->shipping == '0.00')? 'Transport gratuit!' : 'Transport: $'.$product->shipping;
       $list = ($product->list != '0.00')? '$'.$product->list : '';
      ?>
       <div class="card">
         <img src="<?= PROOT .$product->url?>" class="card-img-top" alt="<?=$product->name?>">
         <div class="card-body">
           <h5 class="card-title"><a href="<?=PROOT?>products/details/<?=$product->id?>"><?=$product->name?></a></h5>
-          <p class="products-brand">By: <?=$product->brand?></p>
+          <p class="products-brand"> <?=$product->brand?></p>
           <p class="card-text">$<?=$product->price?> <span class="list-price"><?=$list?></span></p>
           <p class="card-text"><?= $shipping?></p>
-          <a href="<?=PROOT?>products/details/<?=$product->id?>" class="btn btn-primary">See Details</a>
+          <a href="<?=PROOT?>products/details/<?=$product->id?>" class="btn btn-primary">
+Vezi detalii</a>
         </div>
       </div>
     <?php endforeach; ?>

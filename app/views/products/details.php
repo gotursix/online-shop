@@ -3,7 +3,8 @@
 <div class="row">
   <div class="col col-md-6 product-details-slideshow">
     <p>
-      <a class="back-to-results" href="<?=PROOT?>home"><i class="fas fa-arrow-left"></i> Back to results</a>
+      <a style="color: white" class="back-to-results btn btn-info" href="<?=PROOT?>home"><i class="fas fa-arrow-left "></i> 
+Înapoi la rezultate</a>
     </p>
     <!-- slideshow -->
     <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
@@ -25,11 +26,11 @@
       </div>
       <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">Înapoi</span>
       </a>
       <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">Următorul</span>
       </a>
     </div>
   </div>
@@ -39,17 +40,18 @@
     <p>by <?=$this->product->getBrandName()?></p>
     <hr />
     <div>
-      <span class="product-details-label">Price: </span>
-      <span class="product-details-price">$<?=$this->product->price?></span> &
+      <span class="product-details-label">Preț: </span>
+      <span class="product-details-price">$<?=$this->product->price?></span> <br>
       <?php if($this->product->shipping != 0):?>
-        <span class="product-details-label">Shipping: </span>
+        <span class="product-details-label">Transport: </span>
       <?php endif;?>
       <?=$this->product->displayShipping()?>
     </div>
     <div class="product-details-body"><?= html_entity_decode($this->product->body)?></div>
     <div>
       <a href="<?=PROOT?>cart/addToCart/<?=$this->product->id?>" class="btn btn-info">
-        <i class="fas fa-cart-plus"></i> Add To Shopping Cart
+        <i class="fas fa-cart-plus"></i> 
+Adaugă în coșul de cumpărături
       </a>
     </div>
   </div>

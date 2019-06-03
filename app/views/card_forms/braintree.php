@@ -8,7 +8,7 @@
 <?php $this->start('body')?>
 <div class="row">
     <div class="col-md-8">
-      <h3>Purchase Details</h3>
+      <h3>Detalii de cumpărare</h3>
       <form id="braintreeForm" action="<?=PROOT?>cart/checkout/<?=$this->cartId?>" method="post" >
         <?=FH::csrfInput()?>
         <input type="hidden" name="step" value="2" />
@@ -20,7 +20,7 @@
         <input type="hidden" name="shipping_state" value="<?=$this->tx->shipping_state?>" />
         <input type="hidden" name="shipping_zip" value="<?=$this->tx->shipping_zip?>" />
         <div id="dropin-container"></div>
-        <button id="submit-button" class="btn btn-lg btn-primary">Submit Payment</button>
+        <button id="submit-button" class="btn btn-lg btn-primary">Plătește</button>
       </form>
     </div>
 

@@ -1,10 +1,10 @@
 {
-  "Dashboard" : "admindashboard/index",
-  "Products" : {
-    "View Products" : "adminproducts/index",
+  "Tablou de bord" : "admindashboard/index",
+  "Produse" : {
+    "Urmăriți produsele" : "adminproducts/index",
     "seperator" : " ",
-    "Add Product" : "adminproducts/add"
+    "Adaugă un produs" : "adminproducts/add"
   },
-  "Brands" : "adminbrands/index",
-  "Visit Site" : "home/index"
+  "Categorii" : "adminbrands/index",
+  "Vizitați siteul" : "home/index"
 }

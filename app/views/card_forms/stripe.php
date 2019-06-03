@@ -5,7 +5,7 @@
 <?php $this->start('body')?>
 <div class="row">
   <div class="col-md-8">
-    <h3>Purchase Details</h3>
+    <h3>Detalii de cumpărare</h3>
     <form action="<?=PROOT?>cart/checkout/<?=$this->cartId?>" method="post" id="payment-form">
       <?=FH::csrfInput()?>
       <input type="hidden" name="step" value="2"/>
@@ -27,7 +27,7 @@
         <div id="card-errors" role="alert" class="text-danger col-md-12 mb-3"></div>
       </div>
       <div class="col-md-12">
-        <button class="btn btn-lg btn-primary">Submit Payment</button>        
+        <button class="btn btn-lg btn-primary">Plătește</button>        
       </div>
     </form>
   </div>

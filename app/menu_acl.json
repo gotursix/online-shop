@@ -1,9 +1,9 @@
 {
-  "Home" : "home",
-  "Admin" : "admindashboard/index",
-  "Products" : {
-    "View Products" : "adminproducts/index",
+  "Acasă" : "home",
+  "Manager" : "admindashboard/index",
+  "Produse" : {
+    "Urmăriți produsele" : "adminproducts/index",
     "seperator" : " ",
-    "Add Product" : "adminproducts/add"
+    "Adaugă un produs" : "adminproducts/add"
   }
 }

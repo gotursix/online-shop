@@ -1,7 +1,7 @@
 {
-  "Login" : "register/login",
-  "Register" : "register/register",
+  "Conectează-te" : "register/login",
+  "Înregistrează-te" : "register/register",
   "%USERNAME%" : {
-    "Logout" : "register/logout"
+    "Deconectează-te" : "register/logout"
   }
 }

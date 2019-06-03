@@ -45,7 +45,7 @@
   }
 
   function deleteImage(image_id){
-    if(confirm("Are you sure? This cannot be undone!")){
+    if(confirm("Sunteți sigur?")){
       jQuery.ajax({
         url : '<?=PROOT?>adminproducts/deleteImage',
         method : "POST",
