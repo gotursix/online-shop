@@ -20,7 +20,7 @@
       <?= H::buildMenuListItems($menu); ?>
     </ul>
     <ul class="navbar-nav mr-2">
-      <?php if($cartItemCount > 0): ?>
+      <?php if($cartItemCount > 0 && Users::currentUser()): ?>
         <li class="nav-item nav-cart">
           <span class="nav-badge"><?=$cartItemCount?></span>
           <a href="<?=PROOT?>cart" class="nav-link<?=$cartActive?>"><i class="fas fa-shopping-cart"></i></a>

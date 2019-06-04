@@ -1,4 +1,4 @@
-<?php $this->setSiteTitle("Shopping Cart"); ?>
+<?php $this->setSiteTitle("Favorite"); ?>
 
 <?php $this->start('body')?>
 <h2>
@@ -20,7 +20,7 @@ Obiecte favorite (<?=$this->itemCount?> rezultate<?=($this->itemCount == 1)?"" :
           <img src="<?=PROOT. $item->url?>" alt="<?=$item->name?>">
         </div>
         <div class="shopping-cart-item-name">
-          <a href="<?=PROOT?>products/details/<?=$item->id?>" title="<?=$item->name?>">
+          <a href="<?=PROOT?>products/details/<?=$item->product_id?>" title="<?=$item->name?>">
             <?=$item->name?>
           </a>
           <p>by <?=$item->brand?></p>
