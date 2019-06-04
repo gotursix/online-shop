@@ -51,7 +51,7 @@
     <div>
       <a href="<?=PROOT?>cart/addToCart/<?=$this->product->id?>" class="btn btn-info">
         <i class="fas fa-cart-plus"></i> 
-Adaugă în coșul de cumpărături
+Adaugă la favorite
       </a>
     </div>
   </div>

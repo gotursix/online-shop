@@ -2,12 +2,12 @@
 
 <?php $this->start('body')?>
 <h2>
-Coșul de cumpărături (<?=$this->itemCount?> item<?=($this->itemCount == 1)?"" : "s"?>)</h2>
+Obiecte favorite (<?=$this->itemCount?> rezultate<?=($this->itemCount == 1)?"" : " "?>)</h2>
 <hr />
 <div class="row">
   <?php if(sizeof($this->items) == 0): ?>
     <div class="col col-md-8 offset-md-2 text-center">
-      <h3>Coșul de cumpărături este gol!</h3>
+      <h3>Nici un obiect adăugat!</h3>
       <a href="<?=PROOT?>" class="btn btn-lg btn-info">Continuă cumpărăturile</a>
     </div>
 <?php else: ?>
@@ -49,8 +49,6 @@ Coșul de cumpărături (<?=$this->itemCount?> item<?=($this->itemCount == 1)?""
 
   <aside class="col col-md-4 ">
     <div class="shopping-cart-summary">
-      <a href="<?=PROOT?>cart/checkout/<?=$this->cartId?>" class="btn btn-lg btn-primary btn-block">
-Continuați cu verificarea</a>
       <div class="cart-line-item">
         <div>Item<?=($this->itemCount == 1)?"" : "s"?> (<?=$this->itemCount?>)</div>
         <div>$<?=$this->subTotal?></div>
