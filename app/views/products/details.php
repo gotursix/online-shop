@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col col-md-6 product-details-slideshow">
     <p>
-      <a style="color: white" class="back-to-results btn btn-info" href="<?=PROOT?>home"><i class="fas fa-arrow-left "></i> 
+      <a style="color: white" class="back-to-results btn btn-info ml-5" href="<?=PROOT?>home"><i class="fas fa-arrow-left "></i> 
 Înapoi la rezultate</a>
     </p>
     <!-- slideshow -->
