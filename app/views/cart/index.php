@@ -13,7 +13,7 @@ Coșul de cumpărături (<?=$this->itemCount?> item<?=($this->itemCount == 1)?""
 <?php else: ?>
   <div class="col col-md-8">
     <?php foreach($this->items as $item):
-      $shipping = ($item->shipping == 0)? "Free Shipping" : "Shipping: $" . $item->shipping;
+      $shipping = ($item->shipping == 0)? "Transport gratuit!" : "Transport: Lei " . $item->shipping;
       ?>
       <div class="shopping-cart-item">
         <div class="shopping-cart-item-img">

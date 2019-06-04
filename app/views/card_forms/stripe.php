@@ -17,7 +17,7 @@
       <?=FH::hiddenInput('shipping_zip',$this->tx->shipping_zip)?>
       <div class="form-group col-md-12">
         <label for="card-element" class="control-label">
-          Credit or debit card
+          Card de credit sau card de debit
         </label>
         <div id="card-element" class="form-control">
           <!-- A Stripe Element will be inserted here. -->

@@ -7,7 +7,7 @@
   <h1 class="text-center text-secondary w-100"><img src="<?=PROOT?>images/euro.png"><img src="<?=PROOT?>images/click.png">
 <br> Adaugă anunțul tău GRATUIT      
 </h1>
-<div class="d-flex two-column-wrapper<?=$openClass?>" id="two-column-wrapper">
+<div class="d-flex two-column-wrapper open <?=$openClass?>" id="two-column-wrapper">
 
   <div id="expand-filters">
     <i id="toggleIcon" class="fas <?=$openIcon?>"></i>
@@ -40,8 +40,8 @@
 
   <main class="products-wrapper">
     <?php foreach($this->products as $product):
-      $shipping = ($product->shipping == '0.00')? 'Transport gratuit!' : 'Transport: $'.$product->shipping;
-      $list = ($product->list != '0.00')? '$'.$product->list : '';
+      $shipping = ($product->shipping == '0.00')? 'Transport gratuit!' : 'Transport: Lei '.$product->shipping;
+      $list = ($product->list != '0.00')? 'Lei '.$product->list : '';
      ?>
       <div class="card">
         <img src="<?= PROOT .$product->url?>" class="card-img-top" alt="<?=$product->name?>">

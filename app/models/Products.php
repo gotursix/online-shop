@@ -131,7 +131,7 @@
     }
 
     public function displayShipping(){
-      return ($this->shipping == 0)? "Free shipping" : "$" . $this->shipping;
+      return ($this->shipping == 0)? "Transport gratuit" : "Lei " . $this->shipping;
     }
 
     public function getImages(){
