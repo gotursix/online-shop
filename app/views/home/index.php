@@ -8,12 +8,8 @@
 <br> Adaugă anunțul tău GRATUIT      
 </h1>
 <div class="d-flex two-column-wrapper open <?=$openClass?>" id="two-column-wrapper">
-
-  <div id="expand-filters">
-    <i id="toggleIcon" class="fas <?=$openIcon?>"></i>
-  </div>
-
-  <aside class="filters-wrapper">
+<div class="col-lg-2 col-md-6 col-md-offset-3 col-lg-offset-0" style="padding: 30px; margin-left: 30px ">
+  <aside>
     <form id="filter-form" action="" method="post" autocomplete="off">
       <div class="form-group">
         <label class="sr-only" for="search">Caută</label>
@@ -37,7 +33,7 @@
       </div>
     </form>
   </aside>
-
+</div>
   <main class="products-wrapper">
     <?php foreach($this->products as $product):
       $shipping = ($product->shipping == '0.00')? 'Transport gratuit!' : 'Transport: Lei '.$product->shipping;

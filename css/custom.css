@@ -296,12 +296,7 @@ position: relative;
 
 .two-column-wrapper .products-wrapper{
   padding: 28px;
-  padding-left: 40px;
   transition: padding 0.2s ease;
-}
-
-.two-column-wrapper.open .products-wrapper{
-  padding-left: 340px;
 }
 
 .two-column-wrapper #expand-filters{
