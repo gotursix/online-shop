@@ -14,7 +14,7 @@
       <div class="modal-body">
         <form method="post" action="" id="brandForm">
           <input type="hidden" id="brand_id" name="brand_id" value="new" />
-          <?=FH::inputBlock('text','Brand Name','name',$this->brand->name,['class'=>'form-control'],['class'=>'form-group'],$this->formErrors);?>
+          <?=FH::inputBlock('text','Numele categoriei','name',$this->brand->name,['class'=>'form-control'],['class'=>'form-group'],$this->formErrors);?>
         </form>
       </div>
       <div class="modal-footer">
