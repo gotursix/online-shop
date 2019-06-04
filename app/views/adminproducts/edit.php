@@ -33,7 +33,7 @@
       </div>
 
       <div class="row">
-        <?= FH::textareaBlock('Descriere','body',$this->product->body,['class'=>'form-control','rows'=>'6'],['class'=>'form-group col-md-12'],$this->displayErrors) ?>
+        <?= FH::textareaBlock('Descriere - date de contact, adresă, stare etc.','body',$this->product->body,['class'=>'form-control','rows'=>'6'],['class'=>'form-group col-md-12'],$this->displayErrors) ?>
         <?= FH::checkboxBlock('Recomandate','featured',$this->product->isChecked(),['class'=>'form-controll'],['class'=>'form-group col-md-12'],$this->displayErrors) ?>
       </div>
 
