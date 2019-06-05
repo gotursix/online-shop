@@ -1,3 +1,6 @@
+<?php
+use App\Models\Users;
+?>
 <?php $this->setSiteTitle($this->product->name);?>
 <?php $this->start('body');?>
 <div class="row">
@@ -49,10 +52,12 @@
     </div>
     <div class="product-details-body"><?= html_entity_decode($this->product->body)?></div>
     <div>
+      <?php if( Users::currentUser()!=NULL ): ?>
       <a href="<?=PROOT?>cart/addToCart/<?=$this->product->id?>" class="btn btn-info">
         <i class="fas fa-cart-plus"></i> 
 Adaugă la favorite
       </a>
+    <?php endif;?>
     </div>
   </div>
 </div>
