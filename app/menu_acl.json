@@ -1,9 +1,6 @@
 {
-  "Acasă" : "home",
-  "Manager" : "admindashboard/index",
-  "Produse" : {
-    "Urmăriți produsele" : "adminproducts/index",
-    "seperator" : " ",
-    "Adaugă un produs" : "adminproducts/add"
-  }
+  "Anunțuri" : "home",
+    "Anunțurile mele" : "adminproducts/index",
+    "Adaugă un anunț" : "adminproducts/add",
+    "Manager" : "admindashboard/index"
 }

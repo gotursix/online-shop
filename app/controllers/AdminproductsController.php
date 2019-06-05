@@ -48,23 +48,13 @@ class AdminproductsController extends Controller {
       $product->assign($this->request->get(),Products::blackList);
       $product->featured = ($this->request->get('featured') == 'on')? 1 : 0;
       $product->user_id = $this->currentUser->id;
-
-      if($this->currentUser->acl==='["SuperAdmin"]')
-      $product->deleted = 0;
-      else 
-         $product->deleted = 1;
       $product->save();
 
       if($product->validationPassed()){
         //upload images
         ProductImages::uploadProductImages($product->id,$uploads);
         //redirect
-
-        if($this->currentUser->acl==='["SuperAdmin"]')
             Session::addMsg('success','Produs adăugat!');
-        else 
-            Session::addMsg('success','Produs adăugat! Va fi verificat de administrator .');
-
         Router::redirect('adminproducts');
       }
     }
