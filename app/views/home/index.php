@@ -10,7 +10,7 @@
         <br> Adaugă anunțul tău GRATUIT
     </h1>
       </div>
-<div style="margin-left: 60px; margin-left: auto; margin-right: auto;">
+<div style=" margin-left: auto; margin-right: auto;">
     <div id="demo" class="carousel slide" data-ride="carousel">
 
         <!-- Indicators -->
@@ -100,6 +100,42 @@
             <button class="btn btn-light ml-3" <?=$disableNext?> onclick="pager('next')"><i class="fas fa-chevron-right"></i></button>
         </div>
     </main>
+    
+     <div class="col-lg-2 col-md-6 col-md-offset-3 col-lg-offset-0">
+         <div style="margin-top: 30px; margin-left: auto; margin-right: auto;">
+    <div id="demo2" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo2" data-slide-to="0" class="active"></li>
+            <li data-target="#demo2" data-slide-to="1"></li>
+            <li data-target="#demo2" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="<?=PROOT?>images/4.jpg" class="img-fluid" alt="Responsive image" style="max-width:273px; max-height:458px;">
+            </div>
+            <div class="carousel-item">
+                <img src="<?=PROOT?>images/5.jpg" class="img-fluid" alt="Responsive image" style="max-width:273px; max-height:458px;">
+            </div>
+            <div class="carousel-item">
+                <img src="<?=PROOT?>images/6.jpg" class="img-fluid" alt="Responsive image" style="max-width:273px; max-height:458px;">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo2" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo2" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+    </div>
+    
 </div>
 
 <script>
