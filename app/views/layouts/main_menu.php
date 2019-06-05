@@ -7,7 +7,7 @@
   $cartItemCount = Carts::itemCountCurrentCart();
   $cartActive = (H::currentPage() == PROOT.'cart')? " active" : "";
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top mb-5">
+<nav style="background-color:#007bff" class="navbar navbar-expand-lg navbar-dark sticky-top mb-5">
   <!-- Brand and toggle get grouped for better mobile display -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu" aria-controls="main_menu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

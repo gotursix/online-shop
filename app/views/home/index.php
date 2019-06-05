@@ -43,8 +43,8 @@
         <img src="<?= PROOT .$product->url?>" class="card-img-top" alt="<?=$product->name?>">
         <div class="card-body">
           <h5 class="card-title"><a href="<?=PROOT?>products/details/<?=$product->id?>"><?=$product->name?></a></h5>
-          <p class="products-brand"> <?=$product->brand?></p>
-          <p class="card-text">$<?=$product->price?> <span class="list-price"><?=$list?></span></p>
+          <p class="products-brand">Categoria: <?=$product->brand?></p>
+          <p class="card-text">Lei <?=$product->price?> <span class="list-price"><?=$list?></span></p>
           <p class="card-text"><?= $shipping?></p>
           <a href="<?=PROOT?>products/details/<?=$product->id?>" class="btn btn-primary">
 Vezi detalii</a>

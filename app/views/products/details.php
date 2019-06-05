@@ -37,11 +37,11 @@
 
   <div class="col col-md-6">
     <h3><?= $this->product->name?></h3>
-    <p> <?=$this->product->getBrandName()?></p>
+    <p>Categoria: <?=$this->product->getBrandName()?></p>
     <hr />
     <div>
       <span class="product-details-label">Preț: </span>
-      <span class="product-details-price">$<?=$this->product->price?></span> <br>
+      <span class="product-details-price">Lei <?=$this->product->price?></span> <br>
       <?php if($this->product->shipping != 0):?>
         <span class="product-details-label">Transport: </span>
       <?php endif;?>

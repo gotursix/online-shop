@@ -23,7 +23,7 @@ Obiecte favorite (<?=$this->itemCount?> rezultate<?=($this->itemCount == 1)?"" :
           <a href="<?=PROOT?>products/details/<?=$item->product_id?>" title="<?=$item->name?>">
             <?=$item->name?>
           </a>
-          <p>by <?=$item->brand?></p>
+          <p>Categoria: <?=$item->brand?></p>
         </div>
 
         <div class="shopping-cart-item-qty">
@@ -36,7 +36,7 @@ Obiecte favorite (<?=$this->itemCount?> rezultate<?=($this->itemCount == 1)?"" :
         </div>
 
         <div class="shopping-cart-item-price">
-          <div>$<?=$item->price?></div>
+          <div>Lei <?=$item->price?></div>
           <div class="shipping"><?=$shipping?></div>
           <div class="remove-item" onclick="confirmRemoveItem('<?=PROOT?>cart/removeItem/<?=$item->id?>')">
             <i class="fas fa-trash-alt"></i> Șterge
@@ -50,17 +50,17 @@ Obiecte favorite (<?=$this->itemCount?> rezultate<?=($this->itemCount == 1)?"" :
   <aside class="col col-md-4 ">
     <div class="shopping-cart-summary">
       <div class="cart-line-item">
-        <div>Item<?=($this->itemCount == 1)?"" : "s"?> (<?=$this->itemCount?>)</div>
-        <div>$<?=$this->subTotal?></div>
+        <div>Produs<?=($this->itemCount == 1)?"" : "e"?> (<?=$this->itemCount?>)</div>
+        <div>Lei <?=$this->subTotal?></div>
       </div>
       <div class="cart-line-item">
         <div>Livrare</div>
-        <div>$<?=$this->shippingTotal?></div>
+        <div>Lei <?=$this->shippingTotal?></div>
       </div>
       <hr />
       <div class="cart-line-item grand-total">
         <div>Total:</div>
-        <div>$<?=$this->grandTotal?></div>
+        <div>Lei <?=$this->grandTotal?></div>
       </div>
     </div>
   </aside>
