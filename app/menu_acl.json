@@ -1,6 +1,7 @@
 {
   "Anunțuri" : "home",
-      "Adaugă un anunț" : "adminproducts/add",
+    "Adaugă un anunț" : "adminproducts/add",
     "Anunțurile mele" : "adminproducts/index",
-    "Manager" : "admindashboard/index"
+    "Manager" : "admindashboard/index",
+    "Forum" : "http://euroclick.ro/package/"
 }
