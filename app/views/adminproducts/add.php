@@ -1,12 +1,6 @@
 <?php $this->setSiteTitle("Add Product") ?>
 <?php $this->start('head') ?>
   <script src='<?=PROOT?>vendor/tinymce/tinymce/tinymce.min.js'></script>
-  <script>
-    tinymce.init({
-      selector: '#body',
-      branding: false
-    });
-  </script>
 <?php $this->end() ?>
 
 <?php $this->start('body') ?>

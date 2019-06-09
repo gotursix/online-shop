@@ -40,8 +40,13 @@ use App\Models\Users;
 
   <div class="col col-md-6">
     <h3><?= $this->product->name?></h3>
-    <p>Categoria: <?=$this->product->getBrandName()?></p>
-    <hr />
+    <span class="product-details-label">Categoria:</span> <?=$this->product->getBrandName()?><br>
+    <span class="product-details-label">Adaugat de: </span> <?=$this->product->username?><br>
+    <span class="product-details-label">Nr. tel: </span> <?=$this->product->phone?><br>
+    <span class="product-details-label">Email: </span> <?=$this->product->email?><Br>
+    <span class="product-details-label">Oraș: </span> <?=$this->product->city?><Br>
+    <span class="product-details-label">Județ: </span> <?=$this->product->city?><Br>
+
     <div>
       <span class="product-details-label">Preț: </span>
       <span class="product-details-price">Lei <?=$this->product->price?></span> <br>
@@ -50,6 +55,7 @@ use App\Models\Users;
       <?php endif;?>
       <?=$this->product->displayShipping()?>
     </div>
+    <hr />
     <div class="product-details-body"><?= html_entity_decode($this->product->body)?></div>
     <div>
       <?php if( Users::currentUser()!=NULL ): ?>

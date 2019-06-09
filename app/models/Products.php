@@ -6,7 +6,7 @@
 
   class Products extends Model {
 
-    public $id, $created_at, $updated_at, $user_id, $name, $price, $list, $shipping, $body, $brand_id, $featured = 0, $deleted=0;
+    public $id, $created_at, $updated_at, $user_id, $name, $price, $list, $shipping, $body, $username ,$brand_id, $email , $phone , $region , $city , $featured = 0, $deleted=0;
     const blackList = ['id','deleted','featured'];
     protected static $_table = 'products';
     protected static $_softDelete = false;
@@ -16,7 +16,8 @@
     }
 
     public function validator(){
-      $requiredFields = ['name'=>"Name",'price'=>'Price','list'=>'List Price','shipping'=>'Shipping','body'=>'Body'];
+      $requiredFields = ['name'=>"Name",'price'=>'Price','list'=>'List Price','shipping'=>'Shipping','body'=>'Body','email'=>'Email','phone'=>
+      'Phone','region'=>'Judet','city'=>'Oras' , 'username'=>'Numele'];
       foreach($requiredFields as $field => $display){
         $this->runValidation(new RequiredValidator($this,['field'=>$field,'msg'=>$display." is required."]));
       }
@@ -67,6 +68,7 @@
     }
 
     public static function featuredProducts($options){
+      //H::dnd($options['region']);
       $db = DB::getInstance();
       $limit = (array_key_exists('limit',$options) && !empty($options['limit']))? $options['limit'] : 4;
       $offset = (array_key_exists('offset',$options) && !empty($options['offset']))? $options['offset'] : 0;
@@ -89,9 +91,15 @@
         $binds[] = $options['max_price'];
       }
 
+      if(array_key_exists('region', $options) && !empty($options['region'])){
+        $where .= " AND (products.region = ? OR products.region LIKE ?)"; 
+        $binds[] = $options['region'];
+        $binds[] = "%" . $options['region'];
+
+      }
+
       if(array_key_exists('search',$options) && !empty($options['search'])){
-        $where .= " AND (products.name LIKE ? OR brands.name LIKE ?)";
-        $binds[] = "%" . $options['search'] . "%";
+        $where .= " AND (products.name LIKE ?)";
         $binds[] = "%" . $options['search'] . "%";
       }
 
@@ -102,6 +110,8 @@
               ON products.brand_id = brands.id
               WHERE {$where}
             ";
+
+    // H::dnd($sql);
 
       $group = ($hasFilters)? " GROUP BY products.id ORDER BY products.name" : "GROUP BY products.id ORDER BY products.featured DESC";
       $pager = " Limit ? OFFSET ?";

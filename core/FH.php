@@ -127,8 +127,8 @@ class FH {
     $inputString = self::stringifyAttrs($inputAttrs);
     $id = str_replace('[]','',$name);
     $html = '<div' . $divString . '>';
-    $html .= '<label for="'.$id.'" class="control-label">' . $label . '</label>';
-    $html .= '<textarea id="'.$id.'" name="'.$name.'"'.$inputString.'>'.$value.'</textarea>';
+    $html .= '<label for="'.$id.'" class="label">' . $label . '</label>';
+    $html .= '<textarea name="'.$name.'"'.$inputString.'>'.$value.'</textarea>';
     $html .= '<span class="invalid-feedback">'.self::errorMsg($errors,$name).'</span>';
     $html .= '</div>';
     return $html;

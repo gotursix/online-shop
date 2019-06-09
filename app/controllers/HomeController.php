@@ -9,6 +9,7 @@
     public function indexAction() {
       $search = $this->request->get('search');
       $brand = $this->request->get('brand');
+      $region = $this->request->get('region');
       $min_price = $this->request->get('min_price');
       $max_price = $this->request->get('max_price');
       $page = (!empty($this->request->get('page')))? $this->request->get('page') : 1;
@@ -16,7 +17,7 @@
       $offset = ($page - 1) * $limit;
       $options = [
         'search'=>$search,'min_price'=>$min_price,'max_price'=>$max_price,
-        'brand'=>$brand, 'limit' => $limit, 'offset' => $offset
+        'region'=>$region,'brand'=>$brand, 'limit' => $limit, 'offset' => $offset
       ];
       $results = Products::featuredProducts($options);
       $products = $results['results'];
@@ -27,6 +28,7 @@
       $this->view->products = $products;
       $this->view->min_price = $min_price;
       $this->view->max_price = $max_price;
+      $this->view->region = $region;
       $this->view->brand = $brand;
       $this->view->search = $search;
       $this->view->brandOptions = Brands::getAllOptionsForForm();

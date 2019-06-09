@@ -1,7 +1,7 @@
 {
   "Tablou de bord" : "admindashboard/index",
+  "Adaugă un anunț" : "adminproducts/add",
   "Anunțurile mele" : "adminproducts/index",
-    "Adaugă un anunț" : "adminproducts/add",
   "Categorii" : "adminbrands/index",
   "Vizitați siteul" : "home/index"
 }

@@ -23,13 +23,13 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="<?=PROOT?>images/1.jpg" class="img-fluid" alt="Responsive image" style="max-width:1100px; max-height:300px;">
+                <img src="<?=PROOT?>images/1.jpg" class="img-fluid" alt="Responsive image" style="max-width:1100px; max-height:250px;">
             </div>
             <div class="carousel-item">
-                <img src="<?=PROOT?>images/2.jpg" class="img-fluid" alt="Responsive image" style="max-width:1100px; max-height:300px;">
+                <img src="<?=PROOT?>images/2.jpg" class="img-fluid" alt="Responsive image" style="max-width:1100px; max-height:250px;">
             </div>
             <div class="carousel-item">
-                <img src="<?=PROOT?>images/3.jpg" class="img-fluid" alt="Responsive image" style="max-width:1100px; max-height:300px;">
+                <img src="<?=PROOT?>images/3.jpg" class="img-fluid" alt="Responsive image" style="max-width:1100px; max-height:250px;">
             </div>
         </div>
 
@@ -61,6 +61,7 @@
                 <div class="row">
                     <?= FH::hiddenInput('page',$this->page)?>
                     <?= FH::selectBlock('Categorii','brand',$this->brand,$this->brandOptions,['class'=>'form-control form-control-sm'],['class'=>'form-group col-12'])?>
+                     <?= FH::inputBlock('text','Județ','region',$this->region,['class'=>'form-control form-control-sm'],['class'=>'form-group col-12']) ?>
                     <?= FH::inputBlock('number','Preț minim','min_price',$this->min_price,['class'=>'form-control form-control-sm','step'=>'any'],['class'=>'form-group col-6'])?>
                     <?= FH::inputBlock('number','Preț maxim','max_price',$this->max_price,['class'=>'form-control form-control-sm','step'=>'any'],['class'=>'form-group col-6'])?>
                 </div>
@@ -83,6 +84,7 @@
             <div class="card-body">
                 <h5 class="card-title"><a href="<?=PROOT?>products/details/<?=$product->id?>"><?=$product->name?></a></h5>
                 <p class="products-brand">Categoria: <?=$product->brand?></p>
+                <p class="products-brand">Județ: <?=$product->region?></p>
                 <p class="card-text">Lei <?=$product->price?> <span class="list-price"><?=$list?></span></p>
                 <p class="card-text"><?= $shipping?></p>
                 <a href="<?=PROOT?>products/details/<?=$product->id?>" class="btn btn-primary">
